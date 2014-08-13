@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ThreeGlass</string>
+    <string name="title_section1">MyApp</string>
+    <string name="title_section2">フォロー</string>
+    <string name="title_section3">スポット</string>
+    <string name="title_section4">近く</string>
+    <string name="title_section5">設定</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="webapi_url">http://192.168.76.37/apppass/api/</string>
+    <string name="webimage_url">http://192.168.76.37/apppass/</string>
+    <string name="webaccount_url">http://192.168.76.37/Accounts/api/</string>
+    <string name="weblogin_url">http://192.168.76.37/Accounts/account/register?appid=and-01-02</string>
+    <string name="webmanagelogin_url">http://192.168.76.37/Accounts/account/Manage</string>
+
+
+    <!-- Messages -->
+    <string name="msg_ble_not_supported">Bluetooth-LE not supported.</string>
+    <string name="msg_bluetooth_not_supported">Bluetooth not supported.</string>
+    <string name="msg_beacon_monitoring_not_supported">Beacon-monitoring not supported.</string>
+    <string name="msg_beacon_ranging_not_supported">Beacon-ranging not supported.</string>
+    <string name="msg_monitor_in_bg">Monitor beacons in background.</string>
+    <string name="msg_no_condition_specfied">No condition is specified.</string>
+    <string name="msg_invoked_by_beacon">Invoked on Beacon event:\n</string>
+
+    <!-- activity_title -->
+    <string name="title_activity_spot_detail">スポット詳細</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_login">ログイン</string>
+    <string name="title_activity_start">ThreeGlass</string>
+    <string name="title_activity_beacon_view">In-Spot通知</string>
+    <string name="title_activity_treasure">チェックイン中</string>
+    <string name="title_activity_checkin_spot">CheckinSpotActivity</string>
+
+</resources>
