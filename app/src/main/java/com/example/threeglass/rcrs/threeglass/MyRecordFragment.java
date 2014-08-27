@@ -47,7 +47,7 @@ public class MyRecordFragment extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState) {
 
-        v = inflater.inflate(R.layout.activity_record_view, container, false);
+        v = inflater.inflate(R.layout.fragment_time_record, container, false);
         context = v.getContext();
 
 

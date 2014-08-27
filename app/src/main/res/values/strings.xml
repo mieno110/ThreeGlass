@@ -8,13 +8,39 @@
     <string name="title_section4">近く</string>
     <string name="title_section5">設定</string>
     <string name="action_settings">Settings</string>
-
-
+    <!--追加コードーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー-->
+    <string name="title_menu1">ホーム</string>
+    <string name="title_menu2">スケジュール</string>
+    <string name="title_menu3">勤務履歴</string>
+    <string name="title_menu4">入退出履歴</string>
+    <string name="title_menu">設定</string>
+    <!--追加コードーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー-->
     <string name="webapi_url">http://192.168.76.37/apppass/api/</string>
     <string name="webimage_url">http://192.168.76.37/apppass/</string>
     <string name="webaccount_url">http://192.168.76.37/Accounts/api/</string>
     <string name="weblogin_url">http://192.168.76.37/Accounts/account/register?appid=and-01-02</string>
     <string name="webmanagelogin_url">http://192.168.76.37/Accounts/account/Manage</string>
+
+    <!--追加コード-->
+    <string-array name="arrayListY">
+        <item>2012年</item>
+        <item>2013年</item>
+        <item>2014年</item>
+    </string-array>
+    <string-array name="arrayListM">
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+    </string-array>
 
 
     <!-- Messages -->

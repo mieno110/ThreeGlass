@@ -2,8 +2,6 @@ package com.example.threeglass.rcrs.threeglass;
 
 import java.util.ArrayList;
 import java.util.Locale;
-
-
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -39,6 +37,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,7 +59,7 @@ import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher;
 import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
-public class MainActivity extends Activity implements ActionBar.TabListener {
+public class MainActivity extends Activity implements ActionBar.TabListener{
 
     private static NearFragment nearFragment = null;
     private static View nearView = null;
@@ -151,6 +150,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         });
 
         // For each of the sections in the app, add a tab to the action bar.
+        //修正点（三重野）
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
             // Create a tab with text corresponding to the page title defined by
             // the adapter. Also specify this Activity object, which implements
@@ -207,6 +207,12 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
         mainActivity = this;
         //ここまでBeaconの設定
+
+
+    }
+
+    public void onOkClicked(){
+
     }
 
     /**
@@ -288,25 +294,24 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 6;
+            return 5;
         }
 
+        //メニューバーのタイトルを取得
         @Override
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
+                    return getString(R.string.title_menu1).toUpperCase(l);
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
+                    return getString(R.string.title_menu2).toUpperCase(l);
                 case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
+                    return getString(R.string.title_menu3).toUpperCase(l);
                 case 3:
-                    return getString(R.string.title_section4).toUpperCase(l);
+                    return getString(R.string.title_menu4).toUpperCase(l);
                 case 4:
-                    return getString(R.string.title_section5).toUpperCase(l);
-                case 5:
-                    return "入退履歴".toUpperCase(l);
+                    return getString(R.string.title_menu).toUpperCase(l);
             }
             return null;
         }
@@ -339,7 +344,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
         public PlaceholderFragment() {
         }
-
+        //修正点（三重野）
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -353,46 +358,31 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                 return v;
             }
             else if(index == 2){
-                v = new FollowFragment().onCreateView(inflater, container, savedInstanceState);
+                v = new ScheduleHomeFragment().onCreateView(inflater, container, savedInstanceState);
                 return v;
             }
             else if(index == 3){
-                v = new SpotFragment().onCreateView(inflater, container, savedInstanceState);
+                v = new RecordSearchFragment().onCreateView(inflater, container, savedInstanceState);
                 return v;
             }
             else if(index == 4){
-                //Fragmentに地図がのってる場合、何回もonCreateViewすると落ちる。
-                //なので一時対応 ↓
-                //なぜだー？？？
-                if(nearView == null)
-                {
-                    nearFragment = new NearFragment();
-                    nearView = nearFragment.onCreateView(inflater, container, savedInstanceState);
-                    //v = new NearFragment().onCreateView(inflater, container, savedInstanceState);
-                }
-                return nearView;
+                v = new TimeRecordFragment().onCreateView(inflater, container, savedInstanceState);
+                return v;
             }
             else if(index == 5){
                 v = new SettingsFragment().onCreateView(inflater, container, savedInstanceState);
                 return v;
             }
-            else if(index == 6){
-                v = new MyRecordFragment().onCreateView(inflater, container, savedInstanceState);
-                return v;
-            }
+            //else if(index == 6){
+                //v = new MyRecordFragment().onCreateView(inflater, container, savedInstanceState);
+               // return v;
+           //}
             else{
                 v = inflater.inflate(R.layout.fragment_main, container, false);
                 TextView textView = (TextView) v.findViewById(R.id.section_label);
                 textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
                 return v;
             }
-
-
-            //View v = inflater.inflate(R.layout.fragment_mypass, container, false);
-            //TextView textView = (TextView) v.findViewById(R.id.section_label);
-            //textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-            //return v;
-
         }
 
     }
@@ -599,5 +589,32 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             notificationManager.notify(R.string.app_name, notification);
         }
 
+    }
+
+    //カレンダー用クリックイベント
+    public void onButtonClick(View view){
+        switch (view.getId()) {
+            case R.id.displayBtn:
+
+                //選択されているカレンダーの日付を取得
+                DatePicker datePicker = (DatePicker) findViewById(R.id.MyDatePicker);
+                int day = datePicker.getDayOfMonth();
+                int month = datePicker.getMonth() + 1;
+                int year = datePicker.getYear();
+
+                Toast.makeText(MainActivity.this, year+"年"+month+"月"+day +"日", Toast.LENGTH_LONG).show();
+
+               break;
+        }
+    }
+
+    //画面推移用メソッド
+    private void showNextFragment() {
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        //transaction.replace(R.id.main, ScheduleDetailFragment.newInstance());
+
+        transaction.commit();
     }
 }
